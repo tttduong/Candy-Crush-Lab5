@@ -13,6 +13,9 @@ class Piece {
 public class Game extends JPanel implements Runnable, MouseListener {
     final int WIDTH = 740;
     final int HEIGHT = 480;
+    boolean isRunning;
+    Thread thread;
+    Piece[][] grid;
     public Game() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         addMouseListener(this);
@@ -28,7 +31,15 @@ public class Game extends JPanel implements Runnable, MouseListener {
         w.setVisible(true);
     }
 
-
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if(thread == null) {
+            thread = new Thread(this);
+            isRunning = true;
+            thread.start();
+        }
+    }
     @Override
     public void mouseClicked(MouseEvent e) {
 
