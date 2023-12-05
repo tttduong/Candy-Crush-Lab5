@@ -39,7 +39,21 @@ public class Game extends JPanel implements Runnable, MouseListener {
             isRunning = true;
             thread.start();
         }
+    } 
+
+    public void swap(Piece p1, Piece p2) {
+        int rowAux = p1.row;
+        p1.row = p2.row;
+        p2.row = rowAux;
+
+        int colAux = p1.col;
+        p1.col = p2.col;
+        p2.col = colAux;
+
+        grid[p1.row][p1.col] = p1;
+        grid[p2.row][p2.col] = p2;
     }
+    
     @Override
     public void mouseClicked(MouseEvent e) {
 
