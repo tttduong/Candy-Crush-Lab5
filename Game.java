@@ -39,7 +39,7 @@ public class Game extends JPanel implements Runnable, MouseListener {
             isRunning = true;
             thread.start();
         }
-    } 
+    }
 
     public void swap(Piece p1, Piece p2) {
         int rowAux = p1.row;
@@ -53,7 +53,37 @@ public class Game extends JPanel implements Runnable, MouseListener {
         grid[p1.row][p1.col] = p1;
         grid[p2.row][p2.col] = p2;
     }
-    
+
+    public void start () {
+        try {
+            view = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+            grid = new Piece[10][10];
+
+            background = ImageIO.read(getClass().getResource("/background.png"));
+            gems = ImageIO.read(getClass().getResource("/gems.png"));
+            cursor = ImageIO.read(getClass().getResource("/cursor.png"));
+
+            for(int i = 0;i < 10;i++) {
+                for(int j = 0;j < 10;j++) {
+                    grid[i][j] = new Piece();
+                }
+            }
+
+            for (int i = 1;i <=8;i++) {
+                for(int j = 1;j <= 8;j++) {
+                    grid[i][j].kind = (new Random().nextInt(7));
+                    grid[i][j].row = i;
+                    grid[i][j].col = j;
+                    grid[i][j].x = j * tileSize;
+                    grid[i][j].y = i * tileSize;
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
