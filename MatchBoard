@@ -36,4 +36,13 @@ public class MatchBoard {
      // Nhận giá trị tại vị trí đã chỉ định x, y.
     public int getCellValue(int x, int y) {
         return cellValues[x][y];
+    } 
+
+    //điền vào bảng với một bộ số hoàn toàn ngẫu nhiên trong phạm vi từ 0 đến maxNums-1
+    public void fillBoard() {
+        for(int x = 0; x < width; x++) {
+            for(int y = 0; y < height; y++) {
+                cellValues[x][y] = rand.nextInt(maxNums);
+            }
+        }
     }
