@@ -20,7 +20,12 @@ public class Game extends JPanel implements Runnable, MouseListener {
     Piece[][] grid;
     public Game() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        addMouseListener(this);
+        addMouseListener(this); 
+        super("Match Game");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+        pack();
+        setVisible(true);
     }
 
     public static void main(String[] args) {
