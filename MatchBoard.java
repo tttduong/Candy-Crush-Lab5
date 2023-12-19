@@ -2,19 +2,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
- * MatchBoard class: 
- * Biểu thị một lưới 2D gồm các số ngẫu nhiên để có thể tìm các hình giống nhau; từ 3 hình trở lên cả ngang lẫn dọc
- */
+//  * MatchBoard class: 
+//  * Biểu thị một lưới 2D gồm các số ngẫu nhiên để có thể tìm các hình giống nhau; từ 3 hình trở lên cả ngang lẫn dọc
+//  */
+
+
 public class MatchBoard {
   //2D grid 
   private int[][] cellValues;
   private int width, height;
   private Random rand;  // để tạo ra các tổ hợp khối hình random cho game
-  private int maxNums; Range( 0 to -1 for random numbers)
+  private int maxNums; /*Range( 0 to -1 for random numbers)*/
   private boolean enforceAdjacent; // Used to SWAP from an adjacent match to one that allows swaps between any two points.
   
-  // hoán đổi giữa hai điểm bất kỳ.
-  * @param maxNums Số lượng tối đa các loại khác nhau.
+//   // hoán đổi giữa hai điểm bất kỳ.
+//   * @param maxNums Số lượng tối đa các loại khác nhau.
+
+
   public MatchBoard(int width, int height, int maxNums) {
         this.width = width;
         this.height = height;
