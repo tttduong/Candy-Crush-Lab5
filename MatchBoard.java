@@ -48,4 +48,11 @@ public class MatchBoard {
             }
         }
     }
+
+    //Điền tất cả các vị trí đã chỉ định với các số ngẫu nhiên từ 0 đến maxNums-1
+    public void fillPositions(List<Position> positions) {
+        for(Position p : positions) {
+            cellValues[p.x][p.y] = rand.nextInt(maxNums);
+        }
+    }
 }
