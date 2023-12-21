@@ -13,7 +13,6 @@ public class MatchPanel extends JPanel{
     private final int CELL_DIM = 32;
     private MatchBoard matchBoard;
     private Color[] colors = new Color[] {Color.BLUE, Color.BLACK, Color.YELLOW, Color.GREEN, Color.RED };
-    private MatchBoard matchBoard;
     private List<Position> recentMatches;
     private List<Position> recentNewCells;
     
