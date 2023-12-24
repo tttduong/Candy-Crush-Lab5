@@ -37,6 +37,7 @@ public class MatchPanel extends JPanel implements MouseListener{
         this.game = game;
         this.width = width;
         this.height = height;
+        gameState = GameState.ChoosePos1;
         matchBoard = new MatchBoard(width,height, colors.length);
         recentMatches = new ArrayList<>();
         recentNewCells = new ArrayList<>();
