@@ -42,6 +42,7 @@ public class MatchPanel extends JPanel implements MouseListener{
         recentNewCells = new ArrayList<>();
         setPreferredSize(new Dimension(width*CELL_DIM, height*CELL_DIM));
         setBackground(Color.gray);
+        addMouseListener(this);
 
     }
     /**
@@ -114,6 +115,24 @@ public class MatchPanel extends JPanel implements MouseListener{
         g.setColor(Color.WHITE);
         g.drawLine(pos1.x*CELL_DIM,pos1.y*CELL_DIM+CELL_DIM/2,pos1.x*CELL_DIM+CELL_DIM, pos1.y*CELL_DIM+CELL_DIM/2);
         g.drawLine(pos1.x*CELL_DIM+CELL_DIM/2,pos1.y*CELL_DIM,pos1.x*CELL_DIM+CELL_DIM/2, pos1.y*CELL_DIM+CELL_DIM);
+    }
+
+    /**
+     *  Vẽ grid theo số cells
+     */
+    private void drawGrid(Graphics g) {
+        g.setColor(Color.BLACK);
+        // Draw vertical lines
+        int y2 = 0;
+        int y1 = height * CELL_DIM;
+        for(int x = 0; x < width; x++)
+            g.drawLine(x * CELL_DIM, y1, x * CELL_DIM, y2);
+
+        // Draw horizontal lines
+        int x2 = 0;
+        int x1 = width * CELL_DIM;
+        for(int y = 0; y < height; y++)
+            g.drawLine(x1, y * CELL_DIM, x2, y * CELL_DIM);
     }
     @Override
     public void mouseClicked(MouseEvent e) {
