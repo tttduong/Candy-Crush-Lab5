@@ -131,4 +131,19 @@ public class MatchBoard {
         }
     }
 
+    public List<Position> findAllMatches() {
+        List<Position> matched = new ArrayList<>();
+        // Kiểm tra hàng
+        for(int y = 0; y < height; y++) {
+            getMatchesOnRow(y, matched);
+        }
+
+        // Kiểm tra cột
+        for(int x = 0; x < width; x++) {
+            getMatchesOnColumn(x, matched);
+        }
+
+        return matched;
+    }
+
 }
