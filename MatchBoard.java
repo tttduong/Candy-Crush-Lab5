@@ -57,4 +57,78 @@ public class MatchBoard {
         }
     }
 
+    // Swap những cái gem lại với nhau
+    public void swapCells(Position pos1, Position pos2) {                   
+        int temp = cellValues[pos1.x][pos1.y];
+        cellValues[pos1.x][pos1.y] = cellValues[pos2.x][pos2.y];
+        cellValues[pos2.x][pos2.y] = temp;
+    }
+
+    public List<Position> getMatchesFromSwap(Position pos1, Position pos2) {
+        List<Position> matched = new ArrayList<>();
+        int diffx = Math.abs(pos1.x - pos2.x);
+        int diffy = Math.abs(pos1.y - pos2.y);
+        // Kiểm tra xem nếu hợp lệ thì hoán đổi
+        if(enforceAdjacent && !((diffx == 0 || diffy == 0) && (diffx == 1 || diffy == 1))) return matched;
+        // Thay đổi gems
+        swapCells(pos1, pos2);
+
+        // 
+        getMatchesOnRow(pos1.y, matched);
+        if(!enforceAdjacent || diffy > 0)
+            getMatchesOnRow(pos2.y, matched);
+        getMatchesOnColumn(pos1.x, matched);
+        if(!enforceAdjacent || diffx > 0)
+            getMatchesOnColumn(pos2.x, matched);
+
+        // nếu ko giống sẽ swap lại
+        swapCells(pos1, pos2);
+
+        return matched;
+    }
+
+    private void getMatchesOnRow(int y, List<Position> matchedRef) {
+        for(int x = 0; x < width - 2; x++) {
+            // check xem 3 gems cùng hàng có giống nhau không?  
+            if(cellValues[x][y] == cellValues[x+1][y] && cellValues[x][y] == cellValues[x+2][y]) {
+                int matchValue = cellValues[x][y];
+                Position p = new Position(x,y);
+                // Thêm vị trí vào danh sách các vị trí đã khớp nếu nó chưa được thêm trước đó
+                if(!matchedRef.contains(p))
+                    matchedRef.add(p);
+                // Step forward to the second cell. Second and third will be matches at least.
+                x++;
+                // Tiếp tục kiểm tra các ô tiếp theo trong cùng một dòng có giá trị giống nhau không
+                while(x < width && cellValues[x][y] == matchValue) {
+                    p = new Position(x,y);
+                    if(!matchedRef.contains(p))
+                        matchedRef.add(p);
+                    x++;
+                }
+                // quay trở lại nếu gems không match
+                x--;
+            }
+        }
+    }
+
+    private void getMatchesOnColumn(int x, List<Position> matchedRef) {
+        for(int y = 0; y < height - 2; y++) {
+            // check xem 3 gems cùng hàng có giống nhau không? 
+            if(cellValues[x][y] == cellValues[x][y+1] && cellValues[x][y] == cellValues[x][y+2]) {
+                int matchValue = cellValues[x][y];
+                Position p = new Position(x,y);
+                if(!matchedRef.contains(p))
+                    matchedRef.add(p);
+                y++;
+                while(y < height && cellValues[x][y] == matchValue) {
+                    p = new Position(x,y);
+                    if(!matchedRef.contains(p))
+                        matchedRef.add(p);
+                    y++;
+                }
+                y--;
+            }
+        }
+    }
+
 }
