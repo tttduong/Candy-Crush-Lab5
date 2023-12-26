@@ -39,6 +39,7 @@ public class MatchPanel extends JPanel implements MouseListener{
         this.height = height;
         gameState = GameState.ChoosePos1;
         matchBoard = new MatchBoard(width,height, colors.length);
+        gameState = GameState.ChoosePos1;
         recentMatches = new ArrayList<>();
         recentNewCells = new ArrayList<>();
         setPreferredSize(new Dimension(width*CELL_DIM, height*CELL_DIM));
@@ -141,6 +142,9 @@ public class MatchPanel extends JPanel implements MouseListener{
 
         int x = e.getX() / CELL_DIM;
         int y = e.getY() / CELL_DIM;
+
+        if(!isValidPosition(x,y)) return;
+        
         if(gameState == GameState.ChoosePos2 && !isAdjacentToPos1(x,y)) {
             System.out.println("Too far apart! Force swapping back to choosing pos1.");
             gameState = GameState.ChoosePos1;
@@ -150,10 +154,17 @@ public class MatchPanel extends JPanel implements MouseListener{
             setPos1(new Position(x,y));
         } else {
             setPos2(new Position(x,y));
+            attemptCellSwap();
         }
         repaint();
     }
 
+    //Kiểm tra xem vị trí có nằm trong phạm vi hợp lệ hay không
+    private boolean isValidPosition(int x, int y) {
+        if(x < 0 || y < 0 || x >= width || y >= height) return false;
+        return true;
+    }
+    
     @Override
     public void mousePressed(MouseEvent e) {
 
