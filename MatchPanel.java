@@ -15,6 +15,7 @@ public class MatchPanel extends JPanel implements MouseListener{
     private Color[] colors = new Color[] {Color.BLUE, Color.BLACK, Color.YELLOW, Color.GREEN, Color.RED };
     private List<Position> recentMatches;
     private List<Position> recentNewCells;
+    private Time stateTimer; 
     /**
      * Enum GameState: xác định các trạng thái inputs
      * ChoosePos1: vị trí ầu tiên được chọn
@@ -45,6 +46,8 @@ public class MatchPanel extends JPanel implements MouseListener{
         setPreferredSize(new Dimension(width*CELL_DIM, height*CELL_DIM));
         setBackground(Color.gray);
         addMouseListener(this);
+        createStableBoardState();
+        configureTimer();
 
     }
     /**
@@ -163,6 +166,29 @@ public class MatchPanel extends JPanel implements MouseListener{
     private boolean isValidPosition(int x, int y) {
         if(x < 0 || y < 0 || x >= width || y >= height) return false;
         return true;
+    }
+//function ConfigureTimer
+     private void configureTimer() {
+        stateTimer = new Timer(500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List<Position> matches = matchBoard.findAllMatches();
+                //updateScore(matches.size());
+                if(!matches.isEmpty()) {
+                    List<Position> cellsToReplace = matchBoard.shuffledDownToFill(matches);
+                    matchBoard.fillPositions(cellsToReplace);
+                    recentMatches = matches;
+                    recentNewCells = cellsToReplace;
+                    repaint();
+                    stateTimer.start();
+                    System.out.println("Made changes, waiting again!");
+                } else {
+                    System.out.println("All done :)");
+                    gameState = GameState.ChoosePos1;
+                }
+            }
+        });
+        stateTimer.setRepeats(false);
     }
     
     @Override
