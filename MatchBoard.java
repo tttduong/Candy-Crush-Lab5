@@ -56,7 +56,20 @@ public class MatchBoard {
             cellValues[p.x][p.y] = rand.nextInt(maxNums);
         }
     }
+    public List<Position> findAllMatches() {
+        List<Position> matched = new ArrayList<>();
+        // Kiểm tra hàng
+        for(int y = 0; y < height; y++) {
+            getMatchesOnRow(y, matched);
+        }
 
+        // Kiểm tra cột
+        for(int x = 0; x < width; x++) {
+            getMatchesOnColumn(x, matched);
+        }
+
+        return matched;
+    }
     // Swap những cái gem lại với nhau
     public void swapCells(Position pos1, Position pos2) {                   
         int temp = cellValues[pos1.x][pos1.y];
@@ -86,7 +99,18 @@ public class MatchBoard {
 
         return matched;
     }
-
+    public List<Position> shuffledDownToFill(List<Position> positions) {
+        int[] affectedColumns = new int[width];
+        for(int x = 0; x < width; x++) {
+            affectedColumns[x] = 0;
+        }
+        for(Position pos : positions) {
+            affectedColumns[pos.x]++;
+            shuffleDownToFill(pos);
+        }
+        return getAffectedPositionsFromAffectedColumns(affectedColumns);
+    }
+  
     private void getMatchesOnRow(int y, List<Position> matchedRef) {
         for(int x = 0; x < width - 2; x++) {
             // check xem 3 gems cùng hàng có giống nhau không?  
@@ -130,20 +154,22 @@ public class MatchBoard {
             }
         }
     }
-
-    public List<Position> findAllMatches() {
-        List<Position> matched = new ArrayList<>();
-        // Kiểm tra hàng
-        for(int y = 0; y < height; y++) {
-            getMatchesOnRow(y, matched);
+    private void shuffleDownToFill(Position pos) {
+        for(int y = pos.y; y >= 1; y--) {
+            cellValues[pos.x][y] = cellValues[pos.x][y-1];
         }
+    }
 
-        // Kiểm tra cột
-        for(int x = 0; x < width; x++) {
-            getMatchesOnColumn(x, matched);
+     private List<Position> getAffectedPositionsFromAffectedColumns(int[] affectedColumns) {
+        List<Position> affectedPositions = new ArrayList<>();
+        for(int x = 0; x < affectedColumns.length; x++) {
+            if(affectedColumns[x] > 0) {
+                for(int y = 0; y < affectedColumns[x]; y++) {
+                    affectedPositions.add(new Position(x,y));
+                }
+            }
         }
-
-        return matched;
+        return affectedPositions;
     }
 
 }
