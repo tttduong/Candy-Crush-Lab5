@@ -21,5 +21,11 @@ public class Game extends JFrame {
         setVisible(true);
     }
 
+    public void notifyScoreUpdate(int score, int addAmount) {
+    }
+
+    public void restart() {
+    }
+
 
 }
