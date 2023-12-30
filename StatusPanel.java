@@ -5,42 +5,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Match Game
- * Author: Peter Mitchell (2021)
- *
- * StatusPanel class:
- * Defines a panel to show the score, changes in score, and provides
- * buttons for restarting and quitting.
- */
+
 public class StatusPanel extends JPanel implements ActionListener {
-    /**
-     * Reference to the Game object for calling the restart method.
-     */
+    //biến game để gọi restart method 
     private Game game;
-    /**
-     * Reference to the scoreLabel to provide access for changing the score text.
-     */
+    //scorelabel thay đổi khi scoreChangeLable thay đổi 
     private JLabel scoreLabel;
-    /**
-     * Reference to the scoreChangeLabel to provide access to changing the delta score text.
-     */
+    //scoreChangeLabel xuất hiện khi match 
     private JLabel scoreChangeLabel;
-    /**
-     * Reference to the restartButton to check when it is the source of an actionPerformed().
-     */
+    //nút restart 
     private JButton restartButton;
-    /**
-     * Reference to the quitButton to check when it is the source of an actionPerformed().
-     */
+    //nút thoát 
     private JButton quitButton;
 
-    /**
-     * Creates all the labels and buttons for the score, restart, and quit.
-     *
-     * @param game Reference to the Game object.
-     * @param panelHeight The height to use for the panelHeight.
-     */
+    //tạo label và button cho game 
     public StatusPanel(Game game, int panelHeight) {
         this.game = game;
         setPreferredSize(new Dimension(100, panelHeight));
@@ -48,7 +26,8 @@ public class StatusPanel extends JPanel implements ActionListener {
         Font mainFont = new Font("Arial", 0, 40);
         Font scoreChangeFont = new Font("Arial", 0, 60);
 
-        // Set up the Score panels/labels
+    
+        //tạo panel điểm phần top của panel 
         JPanel topPanel = new JPanel();
         topPanel.setBackground(Color.darkGray);
         topPanel.setPreferredSize(new Dimension(100,100));
@@ -61,7 +40,8 @@ public class StatusPanel extends JPanel implements ActionListener {
         topPanel.add(scoreTextLabel);
         topPanel.add(scoreLabel);
 
-        // Set up the Score change panels/labels
+    
+        //tạo panel điểm phần middle của panel 
         JPanel middlePanel = new JPanel();
         middlePanel.setBackground(Color.darkGray);
         middlePanel.setPreferredSize(new Dimension(100, 300));
@@ -70,25 +50,22 @@ public class StatusPanel extends JPanel implements ActionListener {
         scoreChangeLabel.setFont(scoreChangeFont);
         middlePanel.add(scoreChangeLabel);
 
-        // Create the buttons
+        //tạo button 
         restartButton = new JButton("Restart");
         restartButton.addActionListener(this);
         quitButton = new JButton("Quit");
         quitButton.addActionListener(this);
 
-        // Add everything to the top level panel
+    
+        //add mọi function vô panel 
         add(topPanel);
         add(middlePanel);
         add(restartButton);
         add(quitButton);
     }
 
-    /**
-     * Update the labels based on the new score
-     *
-     * @param newScore The new score value to replace the old score.
-     * @param scoreDelta The amount of change from the previous score.
-     */
+
+    //update điểm cộng dựa vào new score 
     public void updateScore(int newScore, int scoreDelta) {
         scoreLabel.setText(""+newScore);
         if(scoreDelta > 0)
@@ -98,12 +75,8 @@ public class StatusPanel extends JPanel implements ActionListener {
         }
     }
 
-    /**
-     * Triggers when either quit or restart button are pressed.
-     * Preforms the appropriate action when pressed.
-     *
-     * @param e Event information, used for the event source.
-     */
+    
+    //khi nhấn quit or restart thì thực hiện chức năng, nếu quit thì thoát, nếu restart thì bắt đầu lại 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == restartButton) {
