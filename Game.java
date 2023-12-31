@@ -5,22 +5,17 @@ public class Game extends JFrame {
     private MatchPanel matchPanel;// Object matchPanel 
     private StatusPanel statusPanel;//Object StatusPanel
     
-    //call một cái game instance để chuẩn bị khởi động trờ chơi 
-    public static void main(String[] args) {
-        Game game = new Game();
-    } 
-
-
     //Gọi Jframe, đưa panel lên hiển thị lên mành hình
     public Game() {
         super("Match Game");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
-        matchPanel = new MatchPanel(15,15, this);//hiển thị chiều rộng và chiều cao của màn hình game 
+        matchPanel = new MatchPanel(8,8, this);
         getContentPane().add(matchPanel);
-        statusPanel = new StatusPanel(this, 15*32);
+        statusPanel = new StatusPanel(this, 20*32);
         getContentPane().add(statusPanel);
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -33,6 +28,4 @@ public class Game extends JFrame {
         statusPanel.updateScore(0,0);
         matchPanel.restart();
     }
-
-
 }
