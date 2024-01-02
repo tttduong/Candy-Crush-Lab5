@@ -1,3 +1,5 @@
+package src;
+
 public class Constant {
     public static final int SCALE = 2;
     public static final int ORIGINAL_TILE_SIZE = 16;

@@ -1,8 +1,10 @@
+package src;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 /**
- * MatchBoard class:
+ * src.MatchBoard class:
  * Biểu thị một lưới 2D gồm các số ngẫu nhiên để có thể tìm các hình giống nhau; từ 3 hình trở lên cả ngang lẫn dọc
  */
 public class MatchBoard {

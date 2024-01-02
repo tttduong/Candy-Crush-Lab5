@@ -1,4 +1,4 @@
-//package MatchGame;
+package src;//package MatchGame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,7 +38,11 @@ public class MatchPanel extends JPanel implements MouseListener {
     //ghi điểm hiện tại 
     private int score;
 
-    
+    private Image cellImage1, cellImage2,cellImage3, cellImage4,cellImage5, cellImage6,cellImage7;
+    private Image backgroundImage;
+    private Image resizedBackgroundImage;
+
+    private Image cursorImage;
 
     //bắt đầu khởi tạo các thuộc tính trong method matchpanel 
     public MatchPanel(int width, int height, Game game) {
@@ -55,6 +59,16 @@ public class MatchPanel extends JPanel implements MouseListener {
         createStableBoardState();
         configureTimer();
         score = 0;
+        cellImage1 = new ImageIcon(getClass().getResource("/res/gem1.png")).getImage();
+        cellImage2 = new ImageIcon(getClass().getResource("/res/gem2.png")).getImage();
+        cellImage3 = new ImageIcon(getClass().getResource("/res/gem3.png")).getImage();
+        cellImage4 = new ImageIcon(getClass().getResource("/res/gem4.png")).getImage();
+        cellImage5 = new ImageIcon(getClass().getResource("/res/gem5.png")).getImage();
+        cellImage6 = new ImageIcon(getClass().getResource("/res/gem6.png")).getImage();
+        cellImage7 = new ImageIcon(getClass().getResource("/res/gem7.png")).getImage();
+        backgroundImage = new ImageIcon(getClass().getResource("/res/background.png")).getImage();
+        resizedBackgroundImage = backgroundImage.getScaledInstance(width * CELL_DIM, height * CELL_DIM, Image.SCALE_SMOOTH);
+        cursorImage = new ImageIcon(getClass().getResource("/res/cursor.png")).getImage();
     }
 
     
@@ -170,8 +184,21 @@ public class MatchPanel extends JPanel implements MouseListener {
      * @param g graphics object
      */
     private void drawCell(Graphics g, int x, int y) {
-        g.setColor(colors[matchBoard.getCellValue(x,y)]);
-        g.fillOval(x * CELL_DIM, y * CELL_DIM, CELL_DIM, CELL_DIM);
+        int cellType = matchBoard.getCellValue(x, y);
+        if (cellType >= 0 && cellType < colors.length) { // imageArray chứa hình ảnh tương ứng với giá trị của ô cell
+            Image[] imageArray = new Image[7];
+            imageArray[0] = cellImage1;
+            imageArray[1] = cellImage2;
+            imageArray[2] = cellImage3;
+            imageArray[3] = cellImage4;
+            imageArray[4] = cellImage5;
+            imageArray[5] = cellImage6;
+            imageArray[6] = cellImage7;
+            Image image = imageArray[cellType]; // Lấy hình ảnh từ mảng imageArray dựa trên giá trị ô cell
+
+            // Vẽ hình ảnh vào ô cell tại vị trí (x * CELL_DIM, y * CELL_DIM) với kích thước CELL_DIM x CELL_DIM
+            g.drawImage(image, x * CELL_DIM, y * CELL_DIM, CELL_DIM, CELL_DIM, null);
+        }
     }
 
     /**
@@ -193,9 +220,7 @@ public class MatchPanel extends JPanel implements MouseListener {
      
      // đánh dấu cross ở postition 1 sau khi position 1 được chọn 
     private void drawSelectedPos1(Graphics g) {
-        g.setColor(Color.WHITE);
-        g.drawLine(pos1.x*CELL_DIM,pos1.y*CELL_DIM+CELL_DIM/2,pos1.x*CELL_DIM+CELL_DIM, pos1.y*CELL_DIM+CELL_DIM/2);
-        g.drawLine(pos1.x*CELL_DIM+CELL_DIM/2,pos1.y*CELL_DIM,pos1.x*CELL_DIM+CELL_DIM/2, pos1.y*CELL_DIM+CELL_DIM);
+        g.drawImage(cursorImage, pos1.x * CELL_DIM, pos1.y * CELL_DIM, CELL_DIM, CELL_DIM, null);
     }
 
     

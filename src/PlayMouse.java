@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -24,9 +26,9 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
         exit=3;
         // Load the background image
         try {
-            backgroundImage = ImageIO.read(getClass().getResourceAsStream("/noclickbutton.jpg"));
-            playImage=ImageIO.read(getClass().getResourceAsStream("/clickPlay.jpg"));
-            exitImage=ImageIO.read(getClass().getResourceAsStream("/click Exit.jpg"));
+            backgroundImage = ImageIO.read(getClass().getResourceAsStream("/res/noclickbutton.jpg"));
+            playImage=ImageIO.read(getClass().getResourceAsStream("/res/clickPlay.jpg"));
+            exitImage=ImageIO.read(getClass().getResourceAsStream("/res/click Exit.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
