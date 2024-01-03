@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
-import MatchGame.Sound.SoundMusic;
+import Sound.SoundMusic;
 
 //ở lớp matchpanel dùng để hiển thị bảng panel
 //và các thông tin sẽ được cập nhật trong matchpanel mỗi khi click chuột 
