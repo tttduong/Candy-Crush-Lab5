@@ -1,13 +1,16 @@
 import javax.swing.JFrame;
 import java.awt.*;
+import MatchGame.Sound.SoundMusic;
 
 public class Game extends JFrame {
+     SoundMusic sound = new SoundMusic("Match3Game(ChangeGems)/MatchGame/src/MatchGame/Sound/Candy Crush Saga New Soundtrack - Main menu 1.wav");
     private MatchPanel matchPanel;// Object matchPanel 
     private StatusPanel statusPanel;//Object StatusPanel
     
     //Gọi Jframe, đưa panel lên hiển thị lên mành hình
     public Game() {
         super("Match Game");
+        sound.playSound("Match3Game(ChangeGems)/MatchGame/src/MatchGame/Sound/Candy Crush Saga New Soundtrack - Main menu 1.wav");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
         matchPanel = new MatchPanel(8,8, this);
