@@ -39,7 +39,7 @@ public class MatchPanel extends JPanel implements MouseListener {
     //ghi điểm hiện tại 
     private int score;
 
-    SoundMusic sound = new SoundMusic("Match3Game(ChangeGems)/MatchGame/src/MatchGame/Sound/045038774-crush-game-candy-sound-05.wav");
+    SoundMusic sound = new SoundMusic("Sound\\SFX - Inventory Popup Out.wav");
 
     //bắt đầu khởi tạo các thuộc tính trong method matchpanel 
     public MatchPanel(int width, int height, Game game) {
@@ -74,7 +74,7 @@ public class MatchPanel extends JPanel implements MouseListener {
      //sau khi swap thì hệ thống sẽ cập nhật là ăn điểm hay là không
     @Override
     public void mouseClicked(MouseEvent e) {
-        sound.playSound("Match3Game(ChangeGems)/MatchGame/src/MatchGame/Sound/SFX - Inventory Popup Out.wav");
+        sound.playSound("Sound\\SFX - Inventory Popup Out.wav");
         if(!(gameState == GameState.ChoosePos1 || gameState == GameState.ChoosePos2)) return;
 
         int x = e.getX() / CELL_DIM;
