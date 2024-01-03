@@ -1,6 +1,6 @@
 import javax.swing.JFrame;
 import java.awt.*;
-import MatchGame.Sound.SoundMusic;
+import Sound.SoundMusic;
 
 public class Game extends JFrame {
      SoundMusic sound = new SoundMusic("Match3Game(ChangeGems)/MatchGame/src/MatchGame/Sound/Candy Crush Saga New Soundtrack - Main menu 1.wav");
