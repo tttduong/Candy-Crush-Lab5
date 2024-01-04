@@ -29,10 +29,10 @@ public class Setting extends JPanel implements MouseListener, MouseMotionListene
 
         // Load the background image
         try {
-            noClickSettingImage=ImageIO.read(getClass().getResourceAsStream("/res/Setting-noMouseOnBack - BMoffMMoff.png"));
-            clickBackgroundOn=ImageIO.read(getClass().getResourceAsStream("/res/noMouseOnBack - BMonMMoff.png"));
-            clickMatchOn=ImageIO.read(getClass().getResourceAsStream("/res/Setting-noMouseOnBack - BMoffMMon.png"));
-            clickBackSetting=ImageIO.read(getClass().getResourceAsStream("/res/MouseOnBack - BMoffMMoff.png"));
+            noClickSettingImage=ImageIO.read(getClass().getResourceAsStream("/src/res/Setting-noMouseOnBack - BMoffMMoff.png"));
+            clickBackgroundOn=ImageIO.read(getClass().getResourceAsStream("/src/res/noMouseOnBack - BMonMMoff.png"));
+            clickMatchOn=ImageIO.read(getClass().getResourceAsStream("/src/res/Setting-noMouseOnBack - BMoffMMon.png"));
+            clickBackSetting=ImageIO.read(getClass().getResourceAsStream("/src/res/MouseOnBack - BMoffMMoff.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -31,9 +31,9 @@ public class NextMouse extends JPanel implements MouseListener, MouseMotionListe
         exit=3;
         // Load the background image
         try {
-            backgroundImage = ImageIO.read(getClass().getResourceAsStream("/res/win-NoMouse.png"));
-            playImage=ImageIO.read(getClass().getResourceAsStream("/res/win-MouseOnPlayAgain.png"));
-            exitImage=ImageIO.read(getClass().getResourceAsStream("/res/win-MouseOnExit.png"));
+            backgroundImage = ImageIO.read(getClass().getResourceAsStream("/src/res/win-NoMouse.png"));
+            playImage=ImageIO.read(getClass().getResourceAsStream("/src/res/win-MouseOnPlayAgain.png"));
+            exitImage=ImageIO.read(getClass().getResourceAsStream("/src/res/win-MouseOnExit.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

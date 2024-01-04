@@ -28,10 +28,10 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
         setting=4;
         // Load the background image
         try {
-            backgroundImage = ImageIO.read(getClass().getResourceAsStream("/res/StartScene-noMouse.png"));
-            playImage=ImageIO.read(getClass().getResourceAsStream("/res/StartScene-MouseOnStart.png"));
-            exitImage=ImageIO.read(getClass().getResourceAsStream("/res/StartScene-MouseOnExit.png"));
-            settingImage=ImageIO.read(getClass().getResourceAsStream("/res/StartScene-MouseOnSetting.png"));
+            backgroundImage = ImageIO.read(getClass().getResourceAsStream("/src/res/StartScene-noMouse.png"));
+            playImage=ImageIO.read(getClass().getResourceAsStream("/src/res/StartScene-MouseOnStart.png"));
+            exitImage=ImageIO.read(getClass().getResourceAsStream("/src/res/StartScene-MouseOnExit.png"));
+            settingImage=ImageIO.read(getClass().getResourceAsStream("/src/res/StartScene-MouseOnSetting.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

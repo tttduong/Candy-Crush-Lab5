@@ -60,16 +60,16 @@ public class MatchPanel extends JPanel implements MouseListener {
         createStableBoardState();
         configureTimer();
         score = 0;
-        cellImage1 = new ImageIcon(getClass().getResource("/res/gem1.png")).getImage();
-        cellImage2 = new ImageIcon(getClass().getResource("/res/gem2.png")).getImage();
-        cellImage3 = new ImageIcon(getClass().getResource("/res/gem3.png")).getImage();
-        cellImage4 = new ImageIcon(getClass().getResource("/res/gem4.png")).getImage();
-        cellImage5 = new ImageIcon(getClass().getResource("/res/gem5.png")).getImage();
-        cellImage6 = new ImageIcon(getClass().getResource("/res/gem6.png")).getImage();
-        cellImage7 = new ImageIcon(getClass().getResource("/res/gem7.png")).getImage();
-        backgroundImage = new ImageIcon(getClass().getResource("/res/background.png")).getImage();
+        cellImage1 = new ImageIcon(getClass().getResource("/src/res/gem1.png")).getImage();
+        cellImage2 = new ImageIcon(getClass().getResource("/src/res/gem2.png")).getImage();
+        cellImage3 = new ImageIcon(getClass().getResource("/src/res/gem3.png")).getImage();
+        cellImage4 = new ImageIcon(getClass().getResource("/src/res/gem4.png")).getImage();
+        cellImage5 = new ImageIcon(getClass().getResource("/src/res/gem5.png")).getImage();
+        cellImage6 = new ImageIcon(getClass().getResource("/src/res/gem6.png")).getImage();
+        cellImage7 = new ImageIcon(getClass().getResource("/src/res/gem7.png")).getImage();
+        backgroundImage = new ImageIcon(getClass().getResource("/src/res/background.png")).getImage();
         resizedBackgroundImage = backgroundImage.getScaledInstance(width * CELL_DIM, height * CELL_DIM, Image.SCALE_SMOOTH);
-        cursorImage = new ImageIcon(getClass().getResource("/res/cursor.png")).getImage();
+        cursorImage = new ImageIcon(getClass().getResource("/src/res/cursor.png")).getImage();
     }
 
     
