@@ -16,8 +16,8 @@ public class CandyCrush extends JFrame {
 
    
     public CandyCrush() {
-        PlayMouse panel = new PlayMouse( new Rectangle(320 - 30, 280, 250, 50),new Rectangle(320 - 30, 390, 250, 50),this);
-        panel.setPreferredSize(new Dimension(960, 640));
+        PlayMouse panel = new PlayMouse(new Rectangle(320 - 30, 280, 250, 100),new Rectangle(320 - 30, 400, 250, 100), new Rectangle(20, 20, 50, 50),this);
+        panel.setPreferredSize(new Dimension(960, 540));
 
         setVisible(true);
         add(panel, BorderLayout.CENTER);
@@ -25,10 +25,8 @@ public class CandyCrush extends JFrame {
         // Set the content pane layout to null
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        sound.playSound("src/resources/Sound/welcome.wav");
         setResizable(false);
         setTitle(Constant.TITLE);
-        // setIconImage(getImage());
         setLocationRelativeTo(null);
         // Add the background to the content pane
         setVisible(true);

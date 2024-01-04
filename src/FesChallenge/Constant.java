@@ -16,6 +16,5 @@ public class Constant {
 
     public static final int SIDE_WIDTH = 680;
     public static final int GridCellSide = TILE_SIZE; //32
-    public static final String TITLE = "Candy Crush";
+    public static final String TITLE = "Fes Challenge";
 }
-

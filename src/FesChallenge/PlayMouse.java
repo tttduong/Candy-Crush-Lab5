@@ -8,27 +8,30 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class PlayMouse extends JPanel implements MouseListener, MouseMotionListener {
-    private BufferedImage backgroundImage,playImage,exitImage;
-    JFrame frame;
+    private BufferedImage backgroundImage, playImage, exitImage, settingImage;
+    private JFrame frame;
     private boolean isClicked;
     private Point mousePos = new Point(-1, -1);
-    private Rectangle area,area2;
-    private int play,exit,state;
+    private Rectangle area, area2, area3;
+    private int play,exit,state, setting;
 
-    public PlayMouse(Rectangle area, Rectangle area2,JFrame jFrame) {
+    public PlayMouse(Rectangle area, Rectangle area2, Rectangle area3, JFrame jFrame) {
         addMouseListener(this);
         addMouseMotionListener(this);
         this.area=area;
         this.frame=jFrame;
         this.area2=area2;
+        this.area3 = area3;
         state=1;
         play=2;
         exit=3;
+        setting=4;
         // Load the background image
         try {
-            backgroundImage = ImageIO.read(getClass().getResourceAsStream("/res/noclickbutton.jpg"));
-            playImage=ImageIO.read(getClass().getResourceAsStream("/res/clickPlay.jpg"));
-            exitImage=ImageIO.read(getClass().getResourceAsStream("/res/click Exit.jpg"));
+            backgroundImage = ImageIO.read(getClass().getResourceAsStream("/res/StartScene-noMouse.png"));
+            playImage=ImageIO.read(getClass().getResourceAsStream("/res/StartScene-MouseOnStart.png"));
+            exitImage=ImageIO.read(getClass().getResourceAsStream("/res/StartScene-MouseOnExit.png"));
+            settingImage=ImageIO.read(getClass().getResourceAsStream("/res/StartScene-MouseOnSetting.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,7 +46,8 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
             handleMouseEvent(e);
         } else if (area2.contains(e.getPoint())) {
             System.exit(0);
-
+        } else if(area3.contains(e.getPoint())) {
+            clickIntoSetting(e);
         }
     }
     public void handleMouseEvent(MouseEvent e) {
@@ -57,6 +61,19 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+    }
+    public void clickIntoSetting(MouseEvent e) {
+        frame.dispose();
+        intoSetting();
+    }
+    private void intoSetting() {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            new Game_2();
+//            new Game();
+        } catch (Exception ex) {
+                ex.printStackTrace();
+        }
     }
     public void mouseReleased(MouseEvent e) {
         isClicked = false;
@@ -79,6 +96,9 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
         } else if (area2.contains(point)) {
             state=exit;
             repaint();
+        } else if(area3.contains(point)){   
+            state=setting;
+            repaint();
         } else{
             state=1;
             repaint();
@@ -93,7 +113,7 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
         super.paintComponent(g);
 
         // Draw the background image
-        if(state==1) {
+       if(state==1) {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
         if(state==play){
@@ -102,8 +122,9 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
         if(state==exit){
             g.drawImage(exitImage, 0, 0, getWidth(), getHeight(), this);
         }
+        if(state==setting){
+            g.drawImage(settingImage, 0, 0, getWidth(), getHeight(), this);
+        }
     }
-
-
 }
 

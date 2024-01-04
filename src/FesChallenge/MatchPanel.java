@@ -24,11 +24,12 @@ public class MatchPanel extends JPanel implements MouseListener {
     //số ô trống của chiều rộng và chiều cao 
     private int width, height;
     //số điểm ảnh (pixel) khi mỗi ô biểu thị 
-    private final int CELL_DIM = 32;
+    private final int CELL_DIM = 80;
     //màu hiển thị khác nhau đối với mỗi ô
-    private Color[] colors = new Color[] { Color.BLUE, Color.BLACK, Color.YELLOW, Color.GREEN, Color.RED };
+    private Color[] colors = new Color[] { Color.BLUE, Color.BLACK, Color.YELLOW, Color.GREEN, Color.RED, Color.MAGENTA, Color.CYAN};
     
     private MatchBoard matchBoard;
+    private GameThread gameThread;
     //ghi lại các match đã thành công hay chưa 
     private List<Position> recentMatches;
     //ghi lại các ô đã swap
@@ -37,7 +38,7 @@ public class MatchPanel extends JPanel implements MouseListener {
     private Timer stateTimer;
     //ghi điểm hiện tại 
     private int score;
-
+    private int goal = 10;
     private Image cellImage1, cellImage2,cellImage3, cellImage4,cellImage5, cellImage6,cellImage7;
     private Image backgroundImage;
     private Image resizedBackgroundImage;
@@ -76,7 +77,7 @@ public class MatchPanel extends JPanel implements MouseListener {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        //drawGrid(g);
+        g.drawImage(resizedBackgroundImage, 0, 0, this);
         drawRecentMatches(g);
         drawAllCells(g);
         if(gameState == GameState.ChoosePos2)
@@ -179,10 +180,16 @@ public class MatchPanel extends JPanel implements MouseListener {
         }
     }
 
-    /**
-     * vẽ hình oval cho mỗi cell, và hiển thị màu cho mỗi cell 
-     * @param g graphics object
-     */
+    public void win(int newScore, int newGoal) {
+        //        goalLabel.setText(""+newGoal);
+                if( newScore >= newGoal) {
+                    System.out.println("You Win!");
+        //            JOptionPane.showMessageDialog(null, "You won!", "Well Done", JOptionPane.INFORMATION_MESSAGE);
+                    NextScene gameWinFrame=new NextScene(matchBoard,gameThread);
+                }
+            }
+
+
     private void drawCell(Graphics g, int x, int y) {
         int cellType = matchBoard.getCellValue(x, y);
         if (cellType >= 0 && cellType < colors.length) { // imageArray chứa hình ảnh tương ứng với giá trị của ô cell
@@ -280,6 +287,7 @@ public class MatchPanel extends JPanel implements MouseListener {
                 } else {
                     System.out.println("All done :)");
                     gameState = GameState.ChoosePos1;
+                    win(score, goal);
                 }
             }
         });
