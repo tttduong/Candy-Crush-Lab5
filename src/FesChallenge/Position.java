@@ -1,9 +1,9 @@
-package Fes Challenge;
+package src.FesChallenge;
 
 import java.util.Objects;
 
 /**
- * src.Position: vị trí điểm theo tọa độ xy
+ * src.FesChallenge.Position: vị trí điểm theo tọa độ xy
  */
 public class Position {
     /**
@@ -23,7 +23,7 @@ public class Position {
      * non-Object --> false
      * khác x hoặc y, x và y --> false
      * x=x && y=y  --> true
-     * Compares the src.Position object against another object.
+     * Compares the src.FesChallenge.Position object against another object.
      */
     @Override
     public boolean equals(Object o) {

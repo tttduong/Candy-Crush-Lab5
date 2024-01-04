@@ -1,4 +1,4 @@
-package Fes Challenge;
+package src.FesChallenge;
 
 import javax.swing.*;
 import java.awt.*;

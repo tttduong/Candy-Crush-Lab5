@@ -1,15 +1,15 @@
-package fes Challenge;
+package src.FesChallenge;
 
 import javax.swing.JFrame;
 import java.awt.*;
 
 public class Game extends JFrame {
     private MatchPanel matchPanel;// Object matchPanel 
-    private StatusPanel statusPanel;//Object src.StatusPanel
+    private StatusPanel statusPanel;//Object src.FesChallenge.StatusPanel
     
     //Gọi Jframe, đưa panel lên hiển thị lên mành hình
     public Game() {
-        super("Match src.Game");
+        super("Match src.FesChallenge.Game");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
         matchPanel = new MatchPanel(8,8, this);

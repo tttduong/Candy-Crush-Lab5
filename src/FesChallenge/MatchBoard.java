@@ -1,10 +1,10 @@
-package Fes Challenge;
+package src.FesChallenge;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 /**
- * src.MatchBoard class:
+ * src.FesChallenge.MatchBoard class:
  * Biểu thị một lưới 2D gồm các số ngẫu nhiên để có thể tìm các hình giống nhau; từ 3 hình trở lên cả ngang lẫn dọc
  */
 public class MatchBoard {
