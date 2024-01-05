@@ -8,30 +8,33 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class PlayMouse extends JPanel implements MouseListener, MouseMotionListener {
-    private BufferedImage backgroundImage, playImage, exitImage, settingImage;
+    private BufferedImage backgroundImage, playImage, exitImage, settingImage, guideImage;
     private JFrame frame;
     private boolean isClicked;
     private Point mousePos = new Point(-1, -1);
-    private Rectangle area, area2, area3;
-    private int play,exit,state, setting;
+    private Rectangle area, area2, area3, area4;
+    private int play,exit,state, setting,guide;
 
-    public PlayMouse(Rectangle area, Rectangle area2, Rectangle area3, JFrame jFrame) {
+    public PlayMouse(Rectangle area, Rectangle area2, Rectangle area3, Rectangle area4, JFrame jFrame) {
         addMouseListener(this);
         addMouseMotionListener(this);
         this.area=area;
         this.frame=jFrame;
         this.area2=area2;
         this.area3 = area3;
+        this.area4 = area4;
         state=1;
         play=2;
         exit=3;
         setting=4;
+        guide=5;
         // Load the background image
         try {
             backgroundImage = ImageIO.read(getClass().getResourceAsStream("/src/res/StartScene-noMouse.png"));
             playImage=ImageIO.read(getClass().getResourceAsStream("/src/res/StartScene-MouseOnStart.png"));
             exitImage=ImageIO.read(getClass().getResourceAsStream("/src/res/StartScene-MouseOnExit.png"));
             settingImage=ImageIO.read(getClass().getResourceAsStream("/src/res/StartScene-MouseOnSetting.png"));
+            guideImage=ImageIO.read(getClass().getResourceAsStream("/src/res/StartScene-MouseOnGuide.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,6 +51,8 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
             System.exit(0);
         } else if(area3.contains(e.getPoint())) {
             clickIntoSetting(e);
+        } else if(area4.contains(e.getPoint())) {
+            clickIntoGuide(e);
         }
     }
     public void handleMouseEvent(MouseEvent e) {
@@ -75,6 +80,19 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
                 ex.printStackTrace();
         }
     }
+
+    public void clickIntoGuide(MouseEvent e){
+        frame.dispose();
+        intoGuide();
+    } 
+    private void intoGuide() {
+        try{
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            new GuideScene();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     public void mouseReleased(MouseEvent e) {
         isClicked = false;
         repaint();
@@ -99,7 +117,11 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
         } else if(area3.contains(point)){   
             state=setting;
             repaint();
-        } else{
+        } else if(area4.contains(point)){
+            state=guide;
+            repaint();
+        }
+         else{
             state=1;
             repaint();
         }
@@ -124,6 +146,9 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
         }
         if(state==setting){
             g.drawImage(settingImage, 0, 0, getWidth(), getHeight(), this);
+        } 
+        if(state==guide){
+            g.drawImage(guideImage, 0, 0, getWidth(), getHeight(), this); 
         }
     }
 }
