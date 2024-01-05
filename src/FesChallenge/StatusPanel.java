@@ -17,6 +17,8 @@ public class StatusPanel extends JPanel implements ActionListener {
     private JButton restartButton;
     //nút thoát 
     private JButton quitButton;
+    //nhãn goal
+    private JLabel goalLabel;
 
     //tạo label và button cho game 
     public StatusPanel(Game game, int panelHeight) {
@@ -50,6 +52,19 @@ public class StatusPanel extends JPanel implements ActionListener {
         scoreChangeLabel.setFont(scoreChangeFont);
         middlePanel.add(scoreChangeLabel);
 
+        // Set up the Goal panels/labels
+        JPanel middle2Panel = new JPanel();
+        middle2Panel.setBackground(Color.darkGray);
+        middle2Panel.setPreferredSize(new Dimension(100,100));
+        JLabel goalTextLabel = new JLabel("Goal");
+        goalTextLabel.setForeground(Color.WHITE);
+        goalTextLabel.setFont(mainFont);
+        goalLabel = new JLabel("10");
+        goalLabel.setForeground(Color.WHITE);
+        goalLabel.setFont(mainFont);
+        middle2Panel.add(goalTextLabel);
+        middle2Panel.add(goalLabel);
+
         //tạo button 
         restartButton = new JButton("Restart");
         restartButton.addActionListener(this);
@@ -60,6 +75,7 @@ public class StatusPanel extends JPanel implements ActionListener {
         //add mọi function vô panel 
         add(topPanel);
         add(middlePanel);
+        add(middle2Panel);
         add(restartButton);
         add(quitButton);
     }
