@@ -54,7 +54,7 @@ public class StatusPanel extends JPanel implements ActionListener {
         //tạo panel điểm phần middle của panel 
         JPanel middlePanel = new JPanel();
         middlePanel.setBackground(Color.darkGray);
-        middlePanel.setPreferredSize(new Dimension(100, 300));
+        middlePanel.setPreferredSize(new Dimension(100, 100));
         scoreChangeLabel = new JLabel("");
         scoreChangeLabel.setForeground(Color.WHITE);
         scoreChangeLabel.setFont(scoreChangeFont);
@@ -75,7 +75,7 @@ public class StatusPanel extends JPanel implements ActionListener {
         
         // tạo panel đếm ngược thời gian
         JPanel timePanel = new JPanel();
-        timePanel.setBackground(Color.PINK);
+        timePanel.setBackground(Color.darkGray);
         timePanel.setPreferredSize(new Dimension(100, 100));
         JLabel timeTextLabel = new JLabel("Time");
         timeTextLabel.setForeground(Color.WHITE);
