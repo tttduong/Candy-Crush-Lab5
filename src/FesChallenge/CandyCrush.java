@@ -2,7 +2,7 @@ package src.FesChallenge;
 
 import javax.swing.*;
 import java.awt.*;
-
+import src.Sound.SoundMusic;
 
 public class CandyCrush extends JFrame {
     public static void main(String[] args) {
@@ -25,6 +25,8 @@ public class CandyCrush extends JFrame {
         // Set the content pane layout to null
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        SoundMusic sound = new SoundMusic("");
+        sound.playSound("src\\Sound\\Candy Crush Saga New Soundtrack - passed-failed.wav");
         setResizable(false);
         setTitle(Constant.TITLE);
         setLocationRelativeTo(null);
