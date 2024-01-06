@@ -19,6 +19,14 @@ public class StatusPanel extends JPanel implements ActionListener {
     private JButton quitButton;
     //nhãn goal
     private JLabel goalLabel;
+    
+    private Timer timer;
+    private JLabel timeLabel;
+    private int second, minute;
+    private String ddSecond, ddMinute;
+    private DecimalFormat decForm = new DecimalFormat("00");
+    private MatchBoard matchBoard;
+    private GameThread gameThread;
 
     //tạo label và button cho game 
     public StatusPanel(Game game, int panelHeight) {
@@ -64,6 +72,24 @@ public class StatusPanel extends JPanel implements ActionListener {
         goalLabel.setFont(mainFont);
         middle2Panel.add(goalTextLabel);
         middle2Panel.add(goalLabel);
+        
+        // tạo panel đếm ngược thời gian
+        JPanel timePanel = new JPanel();
+        timePanel.setBackground(Color.PINK);
+        timePanel.setPreferredSize(new Dimension(100, 100));
+        JLabel timeTextLabel = new JLabel("Time");
+        timeTextLabel.setForeground(Color.WHITE);
+        timeTextLabel.setFont(mainFont);
+        timeLabel = new JLabel("02:00");
+        timeLabel.setForeground(Color.WHITE);
+        timeLabel.setFont(mainFont);
+        timePanel.add(timeTextLabel);
+        timePanel.add(timeLabel);
+        second = 0;
+        minute = 2;
+        countdownTimer();
+        timer.start();
+
 
         //tạo button 
         restartButton = new JButton("Restart");
@@ -76,6 +102,7 @@ public class StatusPanel extends JPanel implements ActionListener {
         add(topPanel);
         add(middlePanel);
         add(middle2Panel);
+        add(timePanel);
         add(restartButton);
         add(quitButton);
     }
@@ -91,12 +118,43 @@ public class StatusPanel extends JPanel implements ActionListener {
         }
     }
 
+    // Hàm đếm ngược thời gian. Khi thời gian kết thúc, màn hình thông báo you lose
+    public void countdownTimer() {
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                second--;
+                ddSecond = decForm.format(second);
+                ddMinute = decForm.format(minute);
+                timeLabel.setText(ddMinute + ":" + ddSecond);
+
+                if (second == -1) {
+                    second = 59;
+                    minute--;
+                    ddSecond = decForm.format(second);
+                    ddMinute = decForm.format(minute);
+                    timeLabel.setText(ddMinute + ":" + ddSecond);
+                }
+
+                if (minute == 0 && second == 0) {
+                    timer.stop();
+                    gameThread.stopGame();
+                    LoseScene loseFrame = new LoseScene(matchBoard, gameThread);
+                }
+            }
+        });
+    }
     
     //khi nhấn quit or restart thì thực hiện chức năng, nếu quit thì thoát, nếu restart thì bắt đầu lại 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == restartButton) {
             game.restart();
+            //reset thời gian
+            second = 0;
+            minute = 2;
+            timeLabel.setText("02:00");
+            timer.start();
         } else if(e.getSource() == quitButton) {
             System.exit(0);
         }
