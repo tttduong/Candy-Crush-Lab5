@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
+import src.Sound.SoundMusic;
 
 //ở lớp matchpanel dùng để hiển thị bảng panel
 //và các thông tin sẽ được cập nhật trong matchpanel mỗi khi click chuột 
@@ -88,6 +89,9 @@ public class MatchPanel extends JPanel implements MouseListener {
      //sau khi swap thì hệ thống sẽ cập nhật là ăn điểm hay là không
     @Override
     public void mouseClicked(MouseEvent e) {
+        SoundMusic sound = new SoundMusic("");
+        sound.playSound("src\\Sound\\SFX - Inventory Popup Out.wav");
+        
         if(!(gameState == GameState.ChoosePos1 || gameState == GameState.ChoosePos2)) return;
 
         int x = e.getX() / CELL_DIM;
