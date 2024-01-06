@@ -26,7 +26,7 @@ public class CandyCrush extends JFrame {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         SoundMusic sound = new SoundMusic("");
-        sound.playSound("src\\Sound\\Candy Crush Saga New Soundtrack - passed-failed.wav");
+        sound.playSound("src\Sound\Candy Crush Saga New Soundtrack - Main menu 1.wav");
         setResizable(false);
         setTitle(Constant.TITLE);
         setLocationRelativeTo(null);
