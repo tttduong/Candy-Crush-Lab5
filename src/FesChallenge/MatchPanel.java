@@ -43,7 +43,7 @@ public class MatchPanel extends JPanel implements MouseListener {
     private Image cellImage1, cellImage2,cellImage3, cellImage4,cellImage5, cellImage6,cellImage7;
     private Image backgroundImage;
     private Image resizedBackgroundImage;
-    SoundMusic sound = new SoundMusic("");
+    SoundMusic sound = new SoundMusic("",1);
 
     private Image cursorImage;
 
