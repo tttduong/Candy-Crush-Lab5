@@ -1,6 +1,5 @@
 package src.Sound;
 
-
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
@@ -8,47 +7,69 @@ import java.io.IOException;
 public class SoundMusic {
     private String file_path, sound_path;
     private int state;
-    Thread thread;
-    public SoundMusic(String file_path) {
+    private Thread thread;
+        private int caseSound;
+
+    public SoundMusic(String file_path,int caseSound) {
         this.file_path = file_path;
         this.sound_path = file_path;
         this.state = 1;
+        this.caseSound=caseSound;
     }
 
     public void playSound(String sound_path) {
         this.sound_path = sound_path;
-        new Thread(new Runnable() {
+        thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     File file = new File(sound_path);
-                    AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-                    AudioFormat format = audioStream.getFormat();
-                    DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
-                    SourceDataLine audioLine = (SourceDataLine) AudioSystem.getLine(info);
-                    byte[] data = new byte[512 * 1024];
-                    audioLine.open();
-                    audioLine.start();
-                    int bytesRead = 0;
-                    while (bytesRead != -1) {
-                        if (state == 3) break;
-                        bytesRead = audioStream.read(data, 0, data.length);
-                        if (bytesRead >= 0) {
-                            audioLine.write(data, 0, bytesRead);
+                    for(int i=0; i<caseSound;i++){
+                        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+                        AudioFormat format = audioStream.getFormat();
+                        DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+                        SourceDataLine audioLine = (SourceDataLine) AudioSystem.getLine(info);
+                        byte[] data = new byte[512 * 1024];
+                        audioLine.open();
+                        audioLine.start();
+                        int bytesRead = 0;
+                        while (bytesRead != -1) {
+                            if (state == 3) break;
+                            bytesRead = audioStream.read(data, 0, data.length);
+                            if (bytesRead >= 0) {
+                                audioLine.write(data, 0, bytesRead);
+                            }
                         }
+                        audioLine.drain();
+                        audioLine.close();
                     }
-                    audioLine.drain();
-                    audioLine.close();
-                } catch (UnsupportedAudioFileException e) {
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                } catch (LineUnavailableException e) {
+                } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
                     throw new RuntimeException(e);
                 }
             }
-        }).start();
+        });
+        thread.start();
+    }
+
+    public void stopMusic() {
+        state = 3;  // Set the state to stop playback
+        try {
+            if (thread != null && thread.isAlive()) {
+                thread.join();  // Wait for the audio playback thread to finish
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void restartMusic() {
+        stopMusic();  // Stop any ongoing playback
+        state = 1;    // Reset the state for restart
+        playSound(sound_path);  // Start playback again
+    }
+
+    public void resetMusic() {
+        stopMusic();  // Stop any ongoing playback
+        state = 1;    // Reset the state for a fresh start
     }
 }
-
-
