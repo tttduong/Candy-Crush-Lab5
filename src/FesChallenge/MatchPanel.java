@@ -43,6 +43,7 @@ public class MatchPanel extends JPanel implements MouseListener {
     private Image cellImage1, cellImage2,cellImage3, cellImage4,cellImage5, cellImage6,cellImage7;
     private Image backgroundImage;
     private Image resizedBackgroundImage;
+    SoundMusic sound = new SoundMusic("");
 
     private Image cursorImage;
 
@@ -89,7 +90,7 @@ public class MatchPanel extends JPanel implements MouseListener {
      //sau khi swap thì hệ thống sẽ cập nhật là ăn điểm hay là không
     @Override
     public void mouseClicked(MouseEvent e) {
-        SoundMusic sound = new SoundMusic("");
+        
         sound.playSound("src\\Sound\\SFX - Inventory Popup Out.wav");
         
         if(!(gameState == GameState.ChoosePos1 || gameState == GameState.ChoosePos2)) return;
