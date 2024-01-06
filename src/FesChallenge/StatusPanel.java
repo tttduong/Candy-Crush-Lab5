@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.text.DecimalFormat;
 
 public class StatusPanel extends JPanel implements ActionListener {
     //biến game để gọi restart method 
