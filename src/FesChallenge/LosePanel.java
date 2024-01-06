@@ -1,4 +1,4 @@
-package MatchGame;
+package FesChallenge;
 
 import javax.swing.*;
 import java.awt.*;
