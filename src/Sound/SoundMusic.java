@@ -1,4 +1,4 @@
-package MatchGame.Sound;
+package src.Sound;
 
 
 import javax.sound.sampled.*;
