@@ -30,7 +30,7 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
         exit=3;
         setting=4;
         guide=5;
-        sound.playSound("src/Sound/Candy Crush Loop5.wav"");
+        sound.playSound("src/Sound/Candy Crush Loop5.wav");
         
         // Load the background image
         try {
