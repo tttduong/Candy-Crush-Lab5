@@ -31,7 +31,7 @@ public class NextMouse extends JPanel implements MouseListener, MouseMotionListe
         state=1;
         play = 2;
         exit=3;
-        sound.playSound("Candy-Crush-Lab5-main\\src\\Sound\\Candy Crush Saga New Soundtrack - Main menu 2.wav");
+        sound.playSound("src/Sound/Candy Crush Saga New Soundtrack - Main menu 2.wav");
         
         // Load the background image
         try {
