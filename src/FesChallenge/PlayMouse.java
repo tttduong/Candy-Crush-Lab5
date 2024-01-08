@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import src.Sound.SoundMusic;
 
 public class PlayMouse extends JPanel implements MouseListener, MouseMotionListener {
     private BufferedImage backgroundImage, playImage, exitImage, settingImage, guideImage;
@@ -14,6 +15,7 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
     private Point mousePos = new Point(-1, -1);
     private Rectangle area, area2, area3, area4;
     private int play,exit,state, setting,guide;
+    SoundMusic sound = new SoundMusic("",1);
 
     public PlayMouse(Rectangle area, Rectangle area2, Rectangle area3, Rectangle area4, JFrame jFrame) {
         addMouseListener(this);
@@ -28,6 +30,8 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
         exit=3;
         setting=4;
         guide=5;
+        sound.playSound("Candy-Crush-Lab5-main/src/Sound/Candy Crush Loop5.wav");
+        
         // Load the background image
         try {
             backgroundImage = ImageIO.read(getClass().getResourceAsStream("/src/res/StartScene-noMouse.png"));
