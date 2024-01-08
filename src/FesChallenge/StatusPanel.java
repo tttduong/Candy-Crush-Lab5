@@ -140,7 +140,6 @@ public class StatusPanel extends JPanel implements ActionListener {
                     timer.stop();
                     // tự động restart khi hết giờ
                     game.restart();
-                    timeLabel.setText("00:30");
                     restartTimer();
                 }
             }
@@ -148,8 +147,9 @@ public class StatusPanel extends JPanel implements ActionListener {
     }
 
     public void restartTimer() {
-        second = 30;
+        second = 40;
         minute = 0;
+        timeLabel.setText("00:30");
         timer.start();
     }
     
