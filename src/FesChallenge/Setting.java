@@ -51,10 +51,7 @@ public class Setting extends JPanel implements MouseListener, MouseMotionListene
         int y = e.getY();
         System.out.println("Mouse Pressed at: (" + x + ", " + y + ")");
     }
-//     public void handleMouseEvent(MouseEvent e) {
-// //        frame.dispose();
-// //        backToMain();
-//     }
+
     private void switchBackgroundMusic(){
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

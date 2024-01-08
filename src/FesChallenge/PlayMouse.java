@@ -78,7 +78,7 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
     private void intoSetting() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            new Game_2();
+            new SettingScene();
 //            new Game();
         } catch (Exception ex) {
                 ex.printStackTrace();
