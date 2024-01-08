@@ -149,7 +149,7 @@ public class StatusPanel extends JPanel implements ActionListener {
     public void restartTimer() {
         second = 40;
         minute = 0;
-        timeLabel.setText("00:30");
+        timeLabel.setText("00:40");
         timer.start();
     }
     
