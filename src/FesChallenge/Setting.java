@@ -47,9 +47,6 @@ public class Setting extends JPanel implements MouseListener, MouseMotionListene
     }
 
     public void mousePressed(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-        System.out.println("Mouse Pressed at: (" + x + ", " + y + ")");
     }
 
     private void switchBackgroundMusic(){
@@ -72,8 +69,8 @@ public class Setting extends JPanel implements MouseListener, MouseMotionListene
             }
     }
     public void mouseReleased(MouseEvent e) {
-        isClicked = false;
-        repaint();
+        // isClicked = false;
+        // repaint();
     }
 
     public void mouseEntered(MouseEvent e) {
@@ -103,8 +100,8 @@ public class Setting extends JPanel implements MouseListener, MouseMotionListene
        }
     }
     public void mouseDragged(MouseEvent e) {
-        mousePos = e.getPoint();
-        repaint();
+        // mousePos = e.getPoint();
+        // repaint();
     }
 
     protected void paintComponent(Graphics g) {
