@@ -80,13 +80,13 @@ public class StatusPanel extends JPanel implements ActionListener {
         JLabel timeTextLabel = new JLabel("Time");
         timeTextLabel.setForeground(Color.WHITE);
         timeTextLabel.setFont(mainFont);
-        timeLabel = new JLabel("02:00");
+        timeLabel = new JLabel("00:40");
         timeLabel.setForeground(Color.WHITE);
         timeLabel.setFont(mainFont);
         timePanel.add(timeTextLabel);
         timePanel.add(timeLabel);
-        second = 0;
-        minute = 2;
+        second = 40;
+        minute = 0;
         countdownTimer();
         timer.start();
 
@@ -135,8 +135,22 @@ public class StatusPanel extends JPanel implements ActionListener {
                     ddMinute = decForm.format(minute);
                     timeLabel.setText(ddMinute + ":" + ddSecond);
                 }
+
+                if (minute == 0 && second == 0) {
+                    timer.stop();
+                    // tự động restart khi hết giờ
+                    game.restart();
+                    timeLabel.setText("00:30");
+                    restartTimer();
+                }
             }
         });
+    }
+
+    public void restartTimer() {
+        second = 30;
+        minute = 0;
+        timer.start();
     }
     
     //khi nhấn quit or restart thì thực hiện chức năng, nếu quit thì thoát, nếu restart thì bắt đầu lại 
@@ -144,11 +158,7 @@ public class StatusPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == restartButton) {
             game.restart();
-            //reset thời gian
-            second = 0;
-            minute = 2;
-            timeLabel.setText("02:00");
-            timer.start();
+            restartTimer();
         } else if(e.getSource() == quitButton) {
             System.exit(0);
         }
