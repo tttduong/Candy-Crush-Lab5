@@ -61,15 +61,4 @@ public class SoundMusic {
             throw new RuntimeException(e);
         }
     }
-
-    public void restartMusic() {
-        stopMusic();  // Stop any ongoing playback
-        state = 1;    // Reset the state for restart
-        playSound(sound_path);  // Start playback again
-    }
-
-    public void resetMusic() {
-        stopMusic();  // Stop any ongoing playback
-        state = 1;    // Reset the state for a fresh start
-    }
 }
