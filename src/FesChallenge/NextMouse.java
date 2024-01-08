@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import src.Sound.SoundMusic;
 
 public class NextMouse extends JPanel implements MouseListener, MouseMotionListener {
     // private NextScene gameWinFrame;
@@ -18,6 +19,7 @@ public class NextMouse extends JPanel implements MouseListener, MouseMotionListe
     private Rectangle area,area2;
     private int play,exit,state;
     private BufferedImage backgroundImage,playImage,exitImage;
+    SoundMusic sound = new SoundMusic("",1000);
 
     public NextMouse(Rectangle area, Rectangle area2, JFrame jFrame) {
         // this.gameWinFrame = gameWinFrame;
@@ -29,6 +31,8 @@ public class NextMouse extends JPanel implements MouseListener, MouseMotionListe
         state=1;
         play = 2;
         exit=3;
+        sound.playSound("Candy-Crush-Lab5-main\\src\\Sound\\Candy Crush Saga New Soundtrack - Main menu 2.wav");
+        
         // Load the background image
         try {
             backgroundImage = ImageIO.read(getClass().getResourceAsStream("/src/res/win-NoMouse.png"));
@@ -47,12 +51,13 @@ public class NextMouse extends JPanel implements MouseListener, MouseMotionListe
         }
     }
     public void handleMouseEvent(MouseEvent e) {
-        frame.dispose();                /*Lỗi chỗ này */
+        frame.dispose();              
         startNewGame();
     }
     private void startNewGame() {
         try {
             new Game();
+            sound.stopMusic();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
