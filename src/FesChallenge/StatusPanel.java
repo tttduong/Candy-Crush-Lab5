@@ -135,12 +135,6 @@ public class StatusPanel extends JPanel implements ActionListener {
                     ddMinute = decForm.format(minute);
                     timeLabel.setText(ddMinute + ":" + ddSecond);
                 }
-
-                if (minute == 0 && second == 0) {
-                    timer.stop();
-                    gameThread.stopGame();
-                    LoseScene loseFrame = new LoseScene(matchBoard, gameThread);
-                }
             }
         });
     }
