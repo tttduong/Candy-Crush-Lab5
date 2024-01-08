@@ -193,6 +193,8 @@ public class MatchPanel extends JPanel implements MouseListener {
                     System.out.println("You Win!");
         //            JOptionPane.showMessageDialog(null, "You won!", "Well Done", JOptionPane.INFORMATION_MESSAGE);
                     NextScene gameWinFrame=new NextScene(matchBoard,gameThread);
+                    sound2.stopMusic();
+                    game.dispose();
                 }
             }
 
