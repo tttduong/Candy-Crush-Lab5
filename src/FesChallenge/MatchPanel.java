@@ -53,7 +53,7 @@ public class MatchPanel extends JPanel implements MouseListener {
         this.game = game;
         this.width = width;
         this.height = height;
-        sound2.playSound("Candy-Crush-Lab5-main\\src\\Sound\\Candy Crush Saga New Soundtrack - Main menu 1.wav");
+        sound2.playSound("src\Sound\Candy Crush Saga New Soundtrack - Main menu 1.wav");
         matchBoard = new MatchBoard(width,height, colors.length);
         gameState = GameState.ChoosePos1;
         recentMatches = new ArrayList<>();
@@ -93,7 +93,7 @@ public class MatchPanel extends JPanel implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         
-        sound.playSound("Candy-Crush-Lab5-main\\src\\Sound\\SFX - Inventory Popup Out.wav");
+        sound.playSound("src\Sound\SFX - Inventory Popup Out.wav");
         
         if(!(gameState == GameState.ChoosePos1 || gameState == GameState.ChoosePos2)) return;
 
