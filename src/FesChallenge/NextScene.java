@@ -1,12 +1,12 @@
 package src.FesChallenge;
 
-//import Controls.SoundManager;
+
 
 import javax.swing.*;
 import java.awt.*;
 
 public class NextScene extends JFrame {
-//    SoundManager sound = new SoundManager("src/resources/Sound/Victory.wav");
+
     MatchBoard matchBoard;
     GameThread gameThread;
     StatusPanel statusPanel;
