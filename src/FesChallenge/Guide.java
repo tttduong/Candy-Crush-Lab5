@@ -37,14 +37,14 @@ public class Guide extends JPanel implements MouseListener, MouseMotionListener 
 
     public void mousePressed(MouseEvent e) {
         if (area.contains(e.getPoint())) {
-            handleMouseEvent(e);
+            // handleMouseEvent(e);
             backToMain();
         }
     }
-    public void handleMouseEvent(MouseEvent e) {
-        frame.dispose();
-        backToMain();
-    }
+    // public void handleMouseEvent(MouseEvent e) {
+    //     frame.dispose();
+    //     backToMain();
+    // }
     private void backToMain() {
         frame.dispose();
         try {
