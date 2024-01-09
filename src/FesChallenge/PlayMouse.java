@@ -6,6 +6,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import src.FesChallenge.Guide.GuideScene;
+import src.FesChallenge.Setting.SettingScene;
 import src.Sound.SoundMusic;
 
 public class PlayMouse extends JPanel implements MouseListener, MouseMotionListener {
