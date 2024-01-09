@@ -98,7 +98,7 @@ public class GameThread extends Thread {
         level=1;
     }
     private void Next() {
-        NextScene gameWinFrame=new NextScene(matchBoard,this);
+        new NextScene(matchBoard,this);
     }
 
     public void restart() {
