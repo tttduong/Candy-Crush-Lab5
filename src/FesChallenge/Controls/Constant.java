@@ -1,4 +1,4 @@
-package src.FesChallenge;
+package src.FesChallenge.Controls;
 
 public class Constant {
     public static final int SCALE = 2;

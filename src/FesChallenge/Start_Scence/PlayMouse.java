@@ -1,4 +1,4 @@
-package src.FesChallenge;
+package src.FesChallenge.Start_Scence;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import src.FesChallenge.Controls.MainBoard;
 import src.FesChallenge.Guide.GuideScene;
 import src.FesChallenge.Setting.SettingScene;
 import src.Sound.SoundMusic;
@@ -69,7 +70,7 @@ public class PlayMouse extends JPanel implements MouseListener, MouseMotionListe
     private void startNewGame() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            new Game();
+            new MainBoard();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

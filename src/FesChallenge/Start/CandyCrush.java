@@ -1,7 +1,7 @@
 package src.FesChallenge.Start;
 
-import src.FesChallenge.Constant;
-import src.FesChallenge.Controls.PlayMouse;
+import src.FesChallenge.Controls.Constant;
+import src.FesChallenge.Start_Scence.PlayMouse;
 
 import javax.swing.*;
 import java.awt.*;

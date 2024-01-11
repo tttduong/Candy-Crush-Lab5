@@ -1,6 +1,12 @@
-package src.FesChallenge;
+package src.FesChallenge.Controls;
 
 
+
+import src.FesChallenge.Controls.Constant;
+import src.FesChallenge.Controls.GameThread;
+import src.FesChallenge.Controls.MatchBoard;
+import src.FesChallenge.Controls.StatusPanel;
+import src.FesChallenge.Final_Scene.NextMouse;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,10 +33,8 @@ public class NextScene extends JFrame {
         // Set the content pane layout to null
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        sound.playSound("src/resources/Sound/Victory.wav");
         setResizable(false);
         setTitle(Constant.TITLE);
-//        setIconImage(logo.getImage()); 
         setLocationRelativeTo(null);
 
 
@@ -57,12 +61,6 @@ public class NextScene extends JFrame {
         }
 
         gameThread = new GameThread(matchBoard,statusPanel);
-//        gameThread.setSpeed(speed);
-//        gameThread.setScore();
-//        gameThread.setLevel(nextLevel);
-//        gameThread.setGoal(goal);
-//        gameThread.setGameover();
-//        matchBoard.clear();
         matchBoard.requestFocus();
         gameThread.startGame();
         gameThread.restart();

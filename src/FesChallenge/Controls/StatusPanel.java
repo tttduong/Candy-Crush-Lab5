@@ -1,4 +1,4 @@
-package src.FesChallenge;
+package src.FesChallenge.Controls;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 
 public class StatusPanel extends JPanel implements ActionListener {
     //biến game để gọi restart method 
-    private Game game;
+    private MainBoard mainBoard;
     //scorelabel thay đổi khi scoreChangeLable thay đổi 
     private JLabel scoreLabel;
     //scoreChangeLabel xuất hiện khi match 
@@ -29,13 +29,12 @@ public class StatusPanel extends JPanel implements ActionListener {
     private GameThread gameThread;
 
     //tạo label và button cho game 
-    public StatusPanel(Game game, int panelHeight) {
-        this.game = game;
+    public StatusPanel(MainBoard mainBoard, int panelHeight) {
+        this.mainBoard = mainBoard;
         setPreferredSize(new Dimension(100, panelHeight));
         setBackground(Color.darkGray);
         Font mainFont = new Font("Arial", 0, 40);
         Font scoreChangeFont = new Font("Arial", 0, 60);
-
     
         //tạo panel điểm phần top của panel 
         JPanel topPanel = new JPanel();
@@ -49,7 +48,6 @@ public class StatusPanel extends JPanel implements ActionListener {
         scoreLabel.setFont(mainFont);
         topPanel.add(scoreTextLabel);
         topPanel.add(scoreLabel);
-
     
         //tạo panel điểm phần middle của panel 
         JPanel middlePanel = new JPanel();
@@ -139,7 +137,7 @@ public class StatusPanel extends JPanel implements ActionListener {
                 if (minute == 0 && second == 0) {
                     timer.stop();
                     // tự động restart khi hết giờ
-                    game.restart();
+                    mainBoard.restart();
                     restartTimer();
                 }
             }
@@ -157,7 +155,7 @@ public class StatusPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == restartButton) {
-            game.restart();
+            mainBoard.restart();
             restartTimer();
         } else if(e.getSource() == quitButton) {
             System.exit(0);

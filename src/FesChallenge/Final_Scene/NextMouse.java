@@ -1,4 +1,4 @@
-package src.FesChallenge;
+package src.FesChallenge.Final_Scene;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -8,6 +8,10 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+
+import src.FesChallenge.Controls.MainBoard;
+import src.FesChallenge.Controls.MatchPanel;
+import src.FesChallenge.Controls.StatusPanel;
 import src.Sound.SoundMusic;
 
 public class NextMouse extends JPanel implements MouseListener, MouseMotionListener {
@@ -56,7 +60,7 @@ public class NextMouse extends JPanel implements MouseListener, MouseMotionListe
     }
     private void startNewGame() {
         try {
-            new Game();
+            new MainBoard();
             sound.stopMusic();
         } catch (Exception ex) {
             ex.printStackTrace();

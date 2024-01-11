@@ -1,4 +1,4 @@
-package src.FesChallenge;
+package src.FesChallenge.Controls;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
+
 import src.Sound.SoundMusic;
 
 //ở lớp matchpanel dùng để hiển thị bảng panel
@@ -15,7 +16,7 @@ import src.Sound.SoundMusic;
 public class MatchPanel extends JPanel implements MouseListener {
     
      //cập nhận điểm số thông qua cái object game
-    private Game game;
+    private MainBoard mainBoard;
     
     private enum GameState { ChoosePos1, ChoosePos2, PauseForDestroy }
     //lưu trữ game state
@@ -49,8 +50,8 @@ public class MatchPanel extends JPanel implements MouseListener {
     private Image cursorImage;
 
     //bắt đầu khởi tạo các thuộc tính trong method matchpanel 
-    public MatchPanel(int width, int height, Game game) {
-        this.game = game;
+    public MatchPanel(int width, int height, MainBoard mainBoard) {
+        this.mainBoard = mainBoard;
         this.width = width;
         this.height = height;
         sound2.playSound("src/Sound/Candy Crush Saga New Soundtrack - Main menu 1.wav");
@@ -182,7 +183,7 @@ public class MatchPanel extends JPanel implements MouseListener {
     private void updateScore(int addAmount) {
         if(addAmount > 0) {
             score += addAmount;
-            game.notifyScoreUpdate(score, addAmount);
+            mainBoard.notifyScoreUpdate(score, addAmount);
             //System.out.println("Score: " + score);
         }
     }
@@ -194,7 +195,7 @@ public class MatchPanel extends JPanel implements MouseListener {
         //            JOptionPane.showMessageDialog(null, "You won!", "Well Done", JOptionPane.INFORMATION_MESSAGE);
                     NextScene gameWinFrame=new NextScene(matchBoard,gameThread);
                     sound2.stopMusic();
-                    game.dispose();
+                    mainBoard.dispose();
                 }
             }
 

@@ -1,11 +1,11 @@
-package src.FesChallenge;
+package src.FesChallenge.Controls;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 /**
- * src.FesChallenge.MatchBoard class:
+ * src.FesChallenge.Controls.MatchBoard class:
  * Biểu thị một lưới 2D gồm các số ngẫu nhiên để có thể tìm các hình giống nhau; từ 3 hình trở lên cả ngang lẫn dọc
  */
 public class MatchBoard extends Component{
@@ -53,7 +53,7 @@ public class MatchBoard extends Component{
     }
 
         // Swap những cái gem lại với nhau
-    public void swapCells(Position pos1, Position pos2) {                   
+    public void swapCells(Position pos1, Position pos2) {
         int temp = cellValues[pos1.x][pos1.y];
         cellValues[pos1.x][pos1.y] = cellValues[pos2.x][pos2.y];
         cellValues[pos2.x][pos2.y] = temp;

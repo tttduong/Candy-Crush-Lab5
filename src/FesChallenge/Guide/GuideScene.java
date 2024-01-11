@@ -1,6 +1,6 @@
 package src.FesChallenge.Guide;
 
-import src.FesChallenge.Constant;
+import src.FesChallenge.Controls.Constant;
 
 import javax.swing.*;
 import java.awt.*;
