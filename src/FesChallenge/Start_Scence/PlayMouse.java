@@ -7,7 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import src.FesChallenge.Controls.MainBoard;
+import src.FesChallenge.Body_Scence.MainBoard;
 import src.FesChallenge.Guide.GuideScene;
 import src.FesChallenge.Setting.SettingScene;
 import src.Sound.SoundMusic;

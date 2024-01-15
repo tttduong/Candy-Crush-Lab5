@@ -1,11 +1,11 @@
-package src.FesChallenge.Controls;
+package src.FesChallenge.Final_Scene;
 
 
 
+import src.FesChallenge.Body_Scence.MatchBoard;
+import src.FesChallenge.Body_Scence.StatusPanel;
 import src.FesChallenge.Controls.Constant;
 import src.FesChallenge.Controls.GameThread;
-import src.FesChallenge.Controls.MatchBoard;
-import src.FesChallenge.Controls.StatusPanel;
 import src.FesChallenge.Final_Scene.NextMouse;
 
 import javax.swing.*;

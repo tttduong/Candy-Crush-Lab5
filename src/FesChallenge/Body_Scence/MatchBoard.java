@@ -1,11 +1,13 @@
-package src.FesChallenge.Controls;
+package src.FesChallenge.Body_Scence;
+
+import src.FesChallenge.Controls.Position;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 /**
- * src.FesChallenge.Controls.MatchBoard class:
+ * src.FesChallenge.Body_Scence.MatchBoard class:
  * Biểu thị một lưới 2D gồm các số ngẫu nhiên để có thể tìm các hình giống nhau; từ 3 hình trở lên cả ngang lẫn dọc
  */
 public class MatchBoard extends Component{

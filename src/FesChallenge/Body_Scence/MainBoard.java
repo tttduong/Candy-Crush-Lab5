@@ -1,14 +1,14 @@
-package src.FesChallenge.Controls;
+package src.FesChallenge.Body_Scence;
 
+import src.FesChallenge.Body_Scence.StatusPanel;
 import src.FesChallenge.Controls.MatchPanel;
-import src.FesChallenge.Controls.StatusPanel;
 
 import javax.swing.JFrame;
 import java.awt.*;
 
 public class MainBoard extends JFrame {
-    private MatchPanel matchPanel;// Object matchPanel 
-    private StatusPanel statusPanel;//Object src.FesChallenge.Controls.StatusPanel
+    private MatchPanel matchPanel;// Object matchPanel
+    private StatusPanel statusPanel;//Object src.FesChallenge.Body_Scence.StatusPanel
     
     //Gọi Jframe, đưa panel lên hiển thị lên mành hình
     public MainBoard() {

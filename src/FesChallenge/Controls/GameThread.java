@@ -2,6 +2,10 @@ package src.FesChallenge.Controls;
 
 
 
+import src.FesChallenge.Body_Scence.MatchBoard;
+import src.FesChallenge.Final_Scene.NextScene;
+import src.FesChallenge.Body_Scence.StatusPanel;
+
 import javax.swing.*;
 
 public class GameThread extends Thread {

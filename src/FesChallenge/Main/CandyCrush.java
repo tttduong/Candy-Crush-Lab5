@@ -1,4 +1,4 @@
-package src.FesChallenge.Start;
+package src.FesChallenge.Main;
 
 import src.FesChallenge.Controls.Constant;
 import src.FesChallenge.Start_Scence.PlayMouse;
@@ -15,8 +15,6 @@ public class CandyCrush extends JFrame {
             ex.printStackTrace();
         }
     }
-
-   
     public CandyCrush() {
         PlayMouse panel = new PlayMouse(new Rectangle(320 - 30, 280, 250, 100),new Rectangle(320 - 30, 400, 250, 100), new Rectangle(20, 20, 50, 50), new Rectangle(880,20,50,100),this);
         panel.setPreferredSize(new Dimension(960, 540));

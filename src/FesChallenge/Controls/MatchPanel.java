@@ -9,6 +9,9 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import src.FesChallenge.Body_Scence.MainBoard;
+import src.FesChallenge.Body_Scence.MatchBoard;
+import src.FesChallenge.Final_Scene.NextScene;
 import src.Sound.SoundMusic;
 
 //ở lớp matchpanel dùng để hiển thị bảng panel

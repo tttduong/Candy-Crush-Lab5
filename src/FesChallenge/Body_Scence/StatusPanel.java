@@ -1,4 +1,6 @@
-package src.FesChallenge.Controls;
+package src.FesChallenge.Body_Scence;
+
+import src.FesChallenge.Controls.GameThread;
 
 import javax.swing.*;
 import java.awt.*;

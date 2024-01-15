@@ -1,6 +1,6 @@
 package src.FesChallenge.Guide;
 
-import src.FesChallenge.Start.CandyCrush;
+import src.FesChallenge.Main.CandyCrush;
 
 import java.awt.*;
 import java.awt.event.*;
