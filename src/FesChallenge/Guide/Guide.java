@@ -26,8 +26,8 @@ public class Guide extends JPanel implements MouseListener, MouseMotionListener 
 
         // Load the background image
         try {
-            guideBackground =ImageIO.read(getClass().getResourceAsStream("/src/res/Rules-noMouseOnBack.png"));
-            guideBackground_Back =ImageIO.read(getClass().getResourceAsStream("/src/res/Rules-MouseOnBack.png"));
+            guideBackground =ImageIO.read(getClass().getResourceAsStream("/src/res/Rules-NoTapMouseOnBack.png"));
+            guideBackground_Back =ImageIO.read(getClass().getResourceAsStream("/src/res/Rules-TapMouseOnBack.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
