@@ -12,7 +12,7 @@ public class MainBoard extends JFrame {
     
     //Gọi Jframe, đưa panel lên hiển thị lên mành hình
     public MainBoard() {
-        super("Match src.FesChallenge.Game");
+        super("Fes Challenge");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
         matchPanel = new MatchPanel(8,8, this);
